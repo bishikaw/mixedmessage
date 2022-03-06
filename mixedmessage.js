@@ -1,45 +1,32 @@
-const randomNumber = Math.floor(Math.random()*5);
+const breakfastOptions = ['bacon and eggs', 'bagels', 'donuts', 'nuts', 'chilaquiles', 'Power bar', 'coffee only']
+const lunchOptions = ['hamburger', 'sandwich', 'salad', 'hot dog', 'chicken bowl', 'burrito']
+const dinnerOptions = ['fried chicken', 'Korean BBQ', 'steak', 'basked chicken', 'pasta', 'Chipotle', 'vegan', 'pizza', 'Thai', 'Japanese', 'gyros']
 
-const morningAction = (randomNumber) => {
-    if (randomNumber === 0) {
-        return 'take a shower before work';
-    } else if (randomNumber === 1) {
-        return 'take a 30 minute walk before work';
-    } else if (randomNumber === 2) {
-        return 'exercise to start your morning';
-    } else if (randomNumber === 3) {
-        return 'maintain the same waking hours on the weekends';
-    } else if (randomNumber = 4) {
-        return 'make an effort not to hit the snooze button'
-    }
+const generateRandomNumber = (num) => {
+    return Math.floor(Math.random() * num);
 }
 
-const eveningAction = (randomNumber) => {
-    if (randomNumber === 0) {
-        return 'go to bed by 10pm';
-    } else if (randomNumber === 1) {
-        return 'avoid looking at screens (including phones) in bed';
-    } else if (randomNumber === 2) {
-        return 'avoid watching TV while falling asleep';
-    } else if (randomNumber === 3) {
-        return 'avoid evening naps';
-    } else if (randomNumber = 4) {
-        return 'read 4 chapters of a book';
-    }
+let mealChoice = ['Here is your randomly generated meal plan for today:']
+
+let breakfastChoice = () => {
+    let brk = breakfastOptions[generateRandomNumber(breakfastOptions.length)];
+    mealChoice.push(`For breakfast, have ${brk}.`);
 }
 
-const foodAction = (randomNumber) => {
-    if (randomNumber === 0) {
-        return 'eat a handful of nuts in the morning';
-    } else if (randomNumber === 1) {
-        return 'replace morning coffee or afternoon sodas with water';
-    } else if (randomNumber === 2) {
-        return 'include 3 servings of vegetables with dinner';
-    } else if (randomNumber === 3) {
-        return 'avoid alcoholic drinks';
-    } else if (randomNumber = 4) {
-        return 'avoid fried foods';
-    }
+let lunchChoice = () => {
+    let lnch = lunchOptions[generateRandomNumber(lunchOptions.length)];
+    mealChoice.push(`For lunch, have a ${lnch}.`);
 }
 
-const message = console.log (`Today's tips for a healthy and productive day: ${morningAction}, ${eveningAction}, and finally, ${foodAction}. `)
+let dinnerChoice = () => {
+    let din = dinnerOptions[generateRandomNumber(dinnerOptions.length)];
+    mealChoice.push(`For dinner, have ${din}.`);
+}
+
+breakfastChoice()
+lunchChoice()
+dinnerChoice()
+
+const formatted = mealChoice.join(' ')
+
+console.log(formatted)
